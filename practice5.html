@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JSX and Babel</title>
+  </head>
+  <style>
+    #root{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+  </style>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+const users = [
+  {
+    id: 1,
+    name: "John",
+    age: 23,
+    gender: "male",
+    email: "atuny0@sohu.com",
+    image: "https://placehold.co/400"
+  },
+  {
+    id: 2,
+    name: "Terry",
+    age: 50,
+    gender: "male",
+    email: "terry@sohu.com",
+    image: "https://placehold.co/400"
+  },
+  {
+    id: 3,
+    name: "Jane",
+    age: 25,
+    gender: "female",
+    email: "jane@sohu.com",
+     image: "https://placehold.co/400"
+  },
+];
+
+const root = document.getElementById('root')
+
+const User = (props) => {
+  return (
+    <>
+    {props.users.map((user) => (
+      <div key={user.id}>
+        <h1>{user.name}</h1>
+        <p>{user.age}</p>
+        <p>{user.gender}</p>
+        <p>{user.email}</p>
+        <img src={user.image} alt={user.name} />
+      </div>
+    ))}
+    </>
+
+  )
+}
+
+ReactDOM.createRoot(root).render(<User users={users}/>)
+</script>
+
+  </body>
